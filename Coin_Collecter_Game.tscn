@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://det7xqniqwn5k"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_5yhuc"]
+[ext_resource type="Texture2D" uid="uid://bwbyi2ylhpvup" path="res://Sprites/Player.png" id="1_lyqp2"]
+[ext_resource type="Script" path="res://game.gd" id="1_vpul0"]
+[ext_resource type="PackedScene" uid="uid://bd4o54bw554mv" path="res://CollectableCoin.tscn" id="3_rue8b"]
+[ext_resource type="Script" path="res://button.gd" id="5_cj85f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syjcf"]
+size = Vector2(53, 66)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vpul0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_5yhuc")
+
+[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(3, -15)
+texture = ExtResource("1_lyqp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_syjcf")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(1.5, 1.5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CharacterBody2D/Camera2D"]
+offset_left = -374.0
+offset_top = -209.0
+offset_right = 258.0
+offset_bottom = 131.0
+
+[node name="VScrollBar" type="VScrollBar" parent="CharacterBody2D/Camera2D"]
+offset_left = -149.0
+offset_top = -74.0
+offset_right = -141.0
+offset_bottom = -66.0
+
+[node name="Label2" type="Label" parent="CharacterBody2D/Camera2D/VScrollBar"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="CharacterBody2D/Camera2D/VScrollBar"]
+offset_left = -2.0
+offset_top = -25.0
+offset_right = 53.0
+offset_bottom = -2.0
+text = "asdasd"
+
+[node name="Button" type="Button" parent="CharacterBody2D/Camera2D/VScrollBar"]
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 54.0
+offset_bottom = 54.0
+text = "Reset"
+script = ExtResource("5_cj85f")
+
+[node name="Coin" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(576, 241)
+
+[node name="Coin2" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(142, -338)
+
+[node name="Coin3" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(667, -318)
+
+[node name="Coin4" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(-432, 157)
+
+[node name="Coin5" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(-338, -100)
+
+[node name="Instructer" type="Label" parent="."]
+offset_left = -18.0
+offset_top = 48.0
+offset_right = 82.0
+offset_bottom = 71.0
+text = "Find 10 coins in this map
+"
+
+[node name="Coin6" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(-338, -100)
+
+[node name="Coin7" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(843, 20)
+
+[node name="Coin8" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(-227, 484)
+
+[node name="Coin9" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(481, 60)
+
+[node name="Coin10" parent="." instance=ExtResource("3_rue8b")]
+position = Vector2(198, 529)
+
+[connection signal="pressed" from="CharacterBody2D/Camera2D/VScrollBar/Button" to="CharacterBody2D/Camera2D/VScrollBar/Button" method="_on_pressed"]
+[connection signal="coin_taken" from="Coin" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin2" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin3" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin4" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin5" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin6" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin7" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin8" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin9" to="." method="_on_coin_coin_taken"]
+[connection signal="coin_taken" from="Coin10" to="." method="_on_coin_coin_taken"]
